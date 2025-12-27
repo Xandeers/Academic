@@ -1,0 +1,51 @@
+# Liste des clients à tester
+- nom: "Kevin(Jeune, sans emploi)"
+  attendu: 0  # 0 = Refus attendu
+  features:
+    Seniority: 0
+    Home: 0
+    Time: 60
+    Age: 21
+    Marital: 1
+    Records: 1
+    Job: 1
+    Expenses: 80
+    Income: 50
+    Assets: 0
+    Debt: 2000
+    Amount: 5000
+    Price: 5000
+
+- nom: "Sophie la Fiable (Senior, Epargne)"
+  attendu: 1  # 1 = Accord attendu
+  features:
+    Seniority: 20
+    Home: 1
+    Time: 12
+    Age: 50
+    Marital: 2
+    Records: 0
+    Job: 3
+    Expenses: 35
+    Income: 250
+    Assets: 10000
+    Debt: 0
+    Amount: 500
+    Price: 1000
+
+- nom: "Marc  Moyen (Revenus ok mais dette)"
+  attendu: 1  
+  features:
+    Seniority: 5
+    Home: 1
+    Time: 24
+    Age: 35
+    Marital: 2
+    Records: 0
+    Job: 2
+    Expenses: 60
+    Income: 140
+    Assets: 2000
+    Debt: 5000
+    Amount: 1200
+    Price: 1500
