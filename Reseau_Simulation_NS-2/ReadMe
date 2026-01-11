@@ -1,0 +1,242 @@
+## But du projet
+
+Le simulateur de reseaux ns-2 permet d’analyser les reseaux et d’evaluer leurs performances.
+Ce type de simulateur est tres utilise en recherche et en R&D afin d’evaluer de nouvelles
+solutions avant de les integrer dans des reseaux reels.
+Le but de ce TP est de se familiariser avec l’outil de simulation de reseaux ns-2 :
+
+(1) en composant quelques scripts TCL simples,
+(2) en analysant les traces produites par les experiences simulees sur des reseaux simples, ainsi que d’etudier certaines performances reseaux
+
+
+## Utiliser ns-2 
+
+Il faut un minimum de 3 etapes pour realiser une simulation avec ns-2 sur votre poste
+sous Linux :
+1. Composer votre script ns avec votre editeur de texte favori et sauvegarder le dans un
+fichier portant l’extension .tcl
+
+2. Executer le. Pour cela, il suﬃt de saisir dans un terminal la commande suivante :
+ns nomDuPrograme.tcl (ou ns < nomDuPrograme.tcl)
+
+3. Acceder aux fichiers contenant les traces issus de la simulation (out.tr et out.nam). Ils
+sont situes dans le repertoire courant. Consulter les de preference depuis un terminal
+avec les commandes more ou less.
+
+
+Assurez vous que la variable d’environnement LC NUMERIC n’est pas fixee a ’,’ (si elle existe
+elle doit ˆetre fixee a ’.’). Si ce n’est pas le cas, executez la commande export LC ALL=POSIX
+pour forcer POSIX comme standard pour votre terminal.
+
+        sujet dispo
+
+## Partie 1  (pt1)
+
+une fois le script pt1.tcl executé avec     
+
+    ns pt1.tcl 
+
+on obtient deux fichier trace .nam et .tr 
+ici on ne regardera que .tr 
+
+Structure du format de trace
+
+ (+/- time from to pkttype size --- flags fid src dst seq dans votre cas) :
+text
+
+exemple : 
+
++ 0.5 0 1 cbr 1000 ------- 1 0.0 1.0 0 0
+
+    +/- : Événement
+
+        + : Envoi d'un paquet
+
+        - : Réception d'un paquet
+
+        r : Réception au niveau de la couche liaison (non présent ici)
+
+        d : Perte de paquet
+
+    0.5 : Temps en secondes
+
+    0 : Nœud source
+
+    1 : Nœud destination
+
+    cbr : Type de trafic (Constant Bit Rate)
+
+    1000 : Taille du paquet en octets
+
+    ------- : Flags (souvent non utilisés)
+
+    1 : Identifiant de flux (flow ID)
+
+    0.0 : Adresse source (format: nœud.port)
+
+    1.0 : Adresse destination
+
+    0 : Numéro de séquence du paquet
+
+
+Qestion 3 : Rappeler ce qu’est un lien full-duplex. Le lien de communication est configure pour
+appliquer une politique Drop Tail. Qu’est-ce qu’une politique Drop Tail ?
+
+un lien full-duplex dans un lien entre A et B est un lien ou Les trace peux etre simultanément envoié
+et recu par A et B (analogie: une conversation). Une politique Drop Tail et un algorithme de gestion de la 
+file d attente de la transmission des paquet elle fonctionne de la manière suivante:
+
+on veut envoyer un paquet si la file nest pas pleine on l ajoute à elle sinon on la supprime 
+"DROP"  
+
+Question 4: Calculer “a la main” le delai minimim de bout-en-bout pour un paquet du trafic UDP
+et le debit applicatif du flux UDP (au niveau du nœud n0).
+
+Le délai minimum de bout en bout est le temps le plus court possible pour que un paquet voyage de la source à la destination.
+
+    delai_minimum = Délai_propagation + Délai_transmission
+
+on a ici le delai de propagation donnée 10ms 
+et on sait que 
+
+    delai_transmission = taille_du_paquet / capacité_du_lien
+
+on a aussi: 
+
+taille_du_paquet = 1000 octets => 1000 * 8 pour des bits
+capacité_du_lien = 1MB/s => 1*10⁶ pour des bits/s
+
+donc  = delai_transmission(s)= 1000*8 / 1*10⁶ = 8000 / 10⁶
+= 0,008 s = 8ms
+
+le delai min de bout en bout est de 18 ms (10 + 8)
+
+
+Question 6 : D’apres le fichier de traces, determiner l’instant de generation du paquet du trafic UDP
+ayant le numero de sequence 10, puis l’instant de son debut d’emission sur le lien. En
+deduire son temps d’attente sur le nœud n0. 
+
+script => infoPaquetX.sh 10 out.tr
+
+resultat: 
+
+    + 0.55 0 1 cbr 1000 ------- 1 0.0 1.0 10 10   
+    - 0.58 0 1 cbr 1000 ------- 1 0.0 1.0 10 10
+    r 0.598 0 1 cbr 1000 ------- 1 0.0 1.0 10 10
+
+
+le paquet 10 ligne 26 mis en file datt à t 0,55
+ligne 35 retirer de la file datt à t 0,58
+ligne 44 paquet recu à t 0, 598
+
+ici le paquet 10 est genére a 0,55 sec et envoyer à 0,58 et recu à 0,598
+
+donc attente de 0,58 - 0,55 = 0,03 sec => 30 ms
+
+7. Pourquoi ce paquet a un delai d attente non nul sur le nœud n0 ? 
+
+Car la file est pleine (tail full)
+
+ 8. En combinant les reponses aux questions 4 et 6, en deduire le delai de bout-en-bout du
+paquet avec pour num´ero de sequence 10. Est-ce que cette valeur correspond au delai
+de bout-en-bout qui peut etre lu sur la trace ?
+
+ logiquement on a delai_minimum + attente 
+
+ donc 18ms + 30 ms => 48ms 
+
+ on a bien cette valeur 
+
+
+
+ ## Partie 2 Cohabitation d’un flux UDP avec un flux TCP 
+
+ 1. script . tcl (pt2.tcl)
+
+ 2. verification : 
+
+ ./verfiPaquetpt2.sh udp 211 out2.tr
++ 2.688 1 2 cbr 1000 ------- 1 1.0 3.0 211 331
+- 2.688 1 2 cbr 1000 ------- 1 1.0 3.0 211 331
+r 2.702 1 2 cbr 1000 ------- 1 1.0 3.0 211 331
++ 2.702 2 3 cbr 1000 ------- 1 1.0 3.0 211 331
+- 2.883227 2 3 cbr 1000 ------- 1 1.0 3.0 211 331
+r 2.90856 2 3 cbr 1000 ------- 1 1.0 3.0 211 331
+
+on est bon 
+
+
+4. il y a 2 numeros dans la trace car il y a 2 flux un tcp et udp donc pour n3 le paquet 211 tcp n est pas le meme 211 udp 
+donc on met 2 numero
+
+
+5. Est-ce que la taille des paquets de donn´ees TCP indiqu´ee dans la trace est coh´erente
+avec la taille que vous avez fix´ee dans le script ? Justifier votre analyse.
+
+on utilise le script affichetypepaquet.sh 
+
+ ./affichetypePaquet.sh tcp out2.tr
++ 2 0 2 tcp 40 ------- 0 0.0 3.2 0 125
+- 2 0 2 tcp 40 ------- 0 0.0 3.2 0 125
+r 2.01016 0 2 tcp 40 ------- 0 0.0 3.2 0 125
++ 2.01016 2 3 tcp 40 ------- 0 0.0 3.2 0 125
+- 2.011333 2 3 tcp 40 ------- 0 0.0 3.2 0 125
+r 2.031547 2 3 tcp 40 ------- 0 0.0 3.2 0 125
++ 2.06192 0 2 tcp 1040 ------- 0 0.0 3.2 1 135
+- 2.06192 0 2 tcp 1040 ------- 0 0.0 3.2 1 135
++ 2.06192 0 2 tcp 1040 ------- 0 0.0 3.2 2 136
+
+les paquet de taille 40 sont ceux du 3 way handshake 
+puis on a initialisé des paquet de taille 1ko donc 1000 octet et on a 1040  =>
+
+1040 octets sur le lien =
+  1000 octets : données applicatives FTP
+    20 octets : en-tête TCP
+    20 octets : en-tête IP
+
+
+8. Pour le premier paquet TCP g´en´er´e par n0 apr`es t= 3 sec, d´eterminer son d´elai d’attente
+dans chacun des nœuds qu’il traverse. Est-ce que ces valeurs vous semblent coh´erentes ?
+Expliquer.
+
+voici le premier paquet tcp  generer par n0 apres t=3sec
+
++ 3.00728 2 3 tcp 1040 ------- 0 0.0 3.2 92 417
+
+donc on voir que il s agit du paquet 92 donc: 
+
+bash$ ./verfiPaquetpt2.sh tcp 92 out2.tr
+
++ 2.99312 0 2 tcp 1040 ------- 0 0.0 3.2 92 417
+- 2.99312 0 2 tcp 1040 ------- 0 0.0 3.2 92 417   // entre n0 et n2
+r 3.00728 0 2 tcp 1040 ------- 0 0.0 3.2 92 417
+
++ 3.00728 2 3 tcp 1040 ------- 0 0.0 3.2 92 417
+- 3.2188 2 3 tcp 1040 ------- 0 0.0 3.2 92 417      //// entre n2 et n3
+r 3.244347 2 3 tcp 1040 ------- 0 0.0 3.2 92 417 
+
+
+entre n0 et n2 pas d attente 
+
+entre n2 et n3 on a : 3.2188 - 3.00728 
+
+awk 'BEGIN {print 3.2188 - 3.00728}' = 0.21152 sec => 211.52ms
+
+cela semble coherent car il y a plus de trafic entre n2 et n3 que entre n0 et n2 car il y a le traffic udp et tcp
+
+
+9. Ces d´elais d’attente seront-ils les memes pour tous les paquets TCP ? Comment l’ex-
+pliquer ?
+
+Non car:
+Augmentation de la congestion : Plus de paquets dans les files dattente au fil du temps
+Variabilité TCP : Fenêtre de congestion évolue
+Partage de bande passante : Avec dautres flux
+RTT variable : Temps aller-retour change
+
+
+10. Est-ce que les paquets UDP auront aussi un d´elai d’attente sur le nœud n2 ? Si oui,
+est-ce que ce d´elai sera le meme pour tous les paquets UDP ?
+
+Oui délai dattente si lien saturé mais Non pas le même pour tous, mais plus régulier que TCP
+car UDP envoie à débit constant, ne s adapte pas à la congestion
