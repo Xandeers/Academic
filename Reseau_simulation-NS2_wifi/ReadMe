@@ -1,0 +1,125 @@
+## TCP & Wi-Fi
+
+## But du TP
+
+Le but de ce TP est :
+
+(1) d’illustrer certaines notions de TCP vues en cours et d’etudier les performances de flux TCP en concurrence 
+
+(2) d’etudier les performances d’un reseau Wi-Fi et de les comparer a celles etudiees en TD.
+
+Remarque : dans une trace ns-2, le numero de sequence reference les segments et non les octets (comme le fait TCP en realite).
+
+
+### Partie 1 - Flux TCP concurrents (2h)
+
+1. Composer le script ns-2 permettant de realiser cette experience. Vous vous aiderez des scripts ns-2 realises lors du TP1. Verifier que votre experience est correcte en vous assurant que l’instant de generation du paquet du flux TCP 1 dont le numero de sequence est 430 a lieu a l’instant 4.0792s.
+
+    regarder fichier pt1.tcl 
+
+verification: (version du script avec ack)
+bash$ ./analyse_trameX.sh 1 430 out.tr     
+
++ 4.0792 0 2 tcp 1040 ------- 1 0.0 3.0 430 933
++ 4.09848 2 3 tcp 1040 ------- 1 0.0 3.0 430 933
++ 4.13344 3 2 ack 40 ------- 1 3.0 0.0 430 948
++ 4.14376 2 0 ack 40 ------- 1 3.0 0.0 430 948
+
+
+2. Avant de pouvoir echanger des donnees, un flux TCP doit etablir une connexion grace a un
+echange aller et retour d’un petit paquet de gestion (appele SYN & SYN-ACK) entre les deux
+nœuds impliques dans l’echange TCP. Observez-vous cet echange dans la simulation ?
+
+
+oui on peu les voir 20 premiere ligne on voit les trame correspondant au 3 way handshake
+
+
+
+3. Repondre aux questions de cette partie en examinant la trace (eventuellement avec la commande
+grep). Pour commencer, on consid`ere la periode comprise entre 0s et 5s.
+Estimer en Mb/s le debit moyen utile (avec en-tˆetes) du flux 1 sur cette periode. Le calcul
+doit ˆetre tr`es simple et rapide (aucun script ne doit ˆetre developpe). Pourquoi ce calcul est une
+approximation du debit moyen ?
+
+je pense que la nuance est que tcp envoye de ack de taille 40 donc les donner utile et les ack c'est comme le debit moyen et que avec udp non a pofiné 
+
+on fait = (nb de paquet * taille paquet * 8 )/tps 
+
+on regarde la trace on a vers 5 sec 
+
+(524) id du paquet donc nb de paquet * 1040 *8 /5
+
+awk 'BEGIN {print ((524*1040*8)/5)/1e6}' = 0.871936
+
+4. Pourrait-on appliquer cette meme m´ethode pour un flux UDP ? 
+
+Non on ne peu pas udp ne fait pas la fiabilité donc on ne peux prendre l'id de paquet comme reference et de plus on ne sait pas si le paquet est bien arrivé 
+
+
+5. Faire de mˆeme pour le flux 2 (toujours entre 0 et 5s)
+
+awk 'BEGIN {print ((42*1040*8)/5)/1e6}' = 0.069888
+
+6. Les d´ebits des flux 1 et 2 sont-ils identiques ? Comment expliquer cette situation ?
+
+non il ne sont pas il y a un lien en plus pour le flux 2 et le lien est bcp plus long 50ms
+
+7. Calculer la somme des d´ebits des flux 1 et 2 et en d´eduire le taux d’utilisation du lien goulet
+d’´etranglement. La situation est-elle satisfaisante du point de vue de l’op´erateur r´eseau ? Et du
+point de vue des utilisateurs ?
+
+=0,94  donc 94% satifiable pour le founisseur (rentable) pour le user avec debit a 87% oui mais l'autre pas top 
+
+8. A present, on consid`ere la p´eriode comprise entre 7s et 10s. Refaire le calcul pour le d´ebit du
+flux 2 sur cette p´eriode (celui du flux 1 est nul). La valeur trouv´ee pour le d´ebit moyen est-elle la
+mˆeme qu’entre 0s et 5s ? Si non, pouvez-vous expliquer pourquoi ?
+
+ awk 'BEGIN {print (((386-91)*1040*8)/3)/1e6}' = 0,818
+
+386-91 car 386 a 10s et avant 7sec 91 paquet envoyer
+le debit a augmenter ce qui logique car flux 1 est arreter debut t 5sec
+
+9. Comment a ´evolu´e le taux d’utilisation du lien goulet d’´etranglement sur cette p´eriode ?
+
+n'y plus de congestion et le taux d'utilisation a diminué lien occupé a 81% 
+
+
+10. V´erifier qu’il n’existe pas d’ACK num´erot´e 41 pour le flux 2. Comment expliquer qu’il n’existe pas
+d’ACK num´erot´e 41 ?
+
+./analyse_trame_Q9.sh 2 41 out.tr
++ 4.59552 1 2 tcp 1040 ------- 2 1.0 4.0 41 1068
++ 4.62216 2 3 tcp 1040 ------- 2 1.0 4.0 41 1068
++ 5.36112 1 2 tcp 1040 ------- 2 1.0 4.0 41 1186
++ 5.38776 2 3 tcp 1040 ------- 2 1.0 4.0 41 1186
++ 5.40608 3 4 tcp 1040 ------- 2 1.0 4.0 41 1186
+
+on vois que le paquet 41 à été drop donc il sera acquité dans un paquet sup (qui lui sera arrivé avant et stoquer et envera un paquet rej selectif)
+
+11. R´efl´echir aux algorithmes permettant de d´eterminer, pour chaque flux et sur un intervalle donn´e,
+le d´ebit moyen, le taux de pertes et le RTT, a partir de la trace obtenue suite a la simulation.
+
+les paquets  envoyés (événements '+', taille > 40 octets) pour un flux donné sur l'intervalle temporel spécifié. Il somme leurs tailles, détermine la durée effective de transmission, puis calcule le débit en convertissant les octets en bits. Seuls les paquets de données sont considérés, excluant ainsi les ACK et paquets de contrôle.
+
+
+L'algorithme compare, pour chaque numéro de séquence unique, la présence d'un événement d'envoi ('+') avec un événement de réception ('-'). Un paquet est considéré perdu s'il a été envoyé mais jamais reçu. Le taux de perte s'obtient en divisant le nombre de paquets perdus par le nombre total de paquets envoyés, exprimé en pourcentage.
+
+le RTT est calculé en mesurant le délai entre l'envoi d'un paquet  et la réception de son ACK correspondant. L'algorithme stocke les temps d'envoi des paquets, puis recherche les ACK (taille 40 octets, type 'ack') qui accusent réception de ces paquets. Le RTT moyen est obtenu en faisant la moyenne de ces délais, en prenant soin d'éviter les valeurs aberrantes et de gérer correctement la correspondance entre numéros de séquence et des ACK.
+
+13. Quelles sont les valeurs obtenues dans l’intervalle 0s et 5s ?
+
+flux 1 :
+
+deb moy 0,87
+taux de perte 0,36%
+RTT moyen 0,12 sec
+
+flux 2 : 
+
+deb moy 0,07
+taux de perte 35%
+RTT moy 0,22sec
+
+14 15 . script $ ./analyse_gen.sh 2 0 5
+
+long rtt pour le flux 2 avnt que le flux 1 s'arrete et le flux constant avec des pics (represente potentielement les paquet arriver du flux 2)
