@@ -1,0 +1,93 @@
+1. Gestion des fichiers et Entrées/Sorties
+
+Ces fonctions servent à faire le pont entre ton disque dur et la mémoire vive (RAM).
+
+cv::imread (Image Read)
+Elle charge une image depuis un fichier vers une structure cv::Mat.
+
+    Usage : cv::Mat img = cv::imread("image.jpg", cv::IMREAD_COLOR);
+
+    Attention : Si le chemin est faux, img.empty() sera vrai. Par défaut, elle charge en BGR.
+
+
+cv::imwrite (Image Write)
+Elle enregistre ta matrice sur le disque.
+
+    Usage : cv::imwrite("resultat.png", img);
+
+    Utilité : Très pratique pour sauvegarder le résultat final de tes algorithmes (seuillage, égalisation, etc.).
+
+2. Interface Utilisateur (GUI)
+
+cv::imshow (Image Show)
+Elle crée une fenêtre et affiche le contenu d'une cv::Mat.
+
+    Usage : cv::imshow("Titre de la fenetre", img);
+
+    Note : Elle ne fonctionne que si elle est suivie de waitKey.
+
+cv::waitKey
+Attend une pression de touche.
+
+    Usage : cv::waitKey(0); (attend indéfiniment) ou cv::waitKey(30); (attend 30ms).
+
+    Crucial : Sans cette fonction, tes fenêtres imshow s'ouvriront et se fermeront instantanément.
+
+3. La structure de données : cv::Mat
+
+C'est l'objet central. Imagine-le comme une structure C qui contient :
+
+    Le nombre de lignes (rows) et de colonnes (cols).
+
+    Le type de données (ex: CV_8UC1 pour du gris 8-bits, CV_8UC3 pour de la couleur).
+
+    Un pointeur vers les données brutes des pixels.
+
+
+4. Accès mémoire "Bas Niveau" (Le cœur de ton TP)
+
+C'est ici que tu vas coder tes algorithmes. Tu as deux façons autorisées de manipuler les pixels :
+
+A. La méthode directe : .at<Type>(y, x)
+C'est la plus simple pour débuter. Elle accède directement à la case mémoire.
+
+    Pour le Gris (CV_8UC1) :
+    C++
+
+uchar valeur = img.at<uchar>(y, x); // Lire
+img.at<uchar>(y, x) = 128;          // Écrire (gris moyen)
+
+Pour la Couleur (CV_8UC3) :
+C++
+
+    cv::Vec3b pixel = img.at<cv::Vec3b>(y, x);
+    uchar bleu = pixel[0];
+    uchar vert = pixel[1];
+    uchar rouge = pixel[2];
+
+B. La méthode par pointeurs (plus rapide)
+
+Si tu veux manipuler l'image comme un vrai tableau C :
+C++
+
+// Accès au premier pixel de la ligne 'y'
+uchar* ligne = img.ptr<uchar>(y); 
+uchar pixel = ligne[x]; // Accès à la colonne 'x'
+
+
+
+//// patie 1 
+
+
+L'histogramme est l'outil de base pour étudier la dynamique d'une image.
+ Il représente la distribution des niveaux d'intensité : 
+     - l'axe horizontal pour les niveaux (0 à 255) 
+     - l'axe vertical pour le nombre de pixels.
+
+
+1. Calcul et Normalisation
+
+Avant de transformer l'image, vous devez quantifier l'existant :
+
+    Comptage (Histogramme brut) : Parcourez chaque pixel (x,y) de l'image.
+    Pour chaque intensité trouvée, incrémentez un compteur dans un tableau de 256 cases.

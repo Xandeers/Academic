@@ -1,0 +1,60 @@
+# Objectif
+
+L’objectif de ce premier TP est de comprendre les bases du traitement d’image numérique par
+l’implémentation directe des algorithmes fondamentaux.
+Vous êtes explicitement invités à écrire du code manipulant les pixels, les histogrammes et les
+transformations de base. L’utilisation de fonctions toutes faites est volontairement limitée afin de
+favoriser une compréhension approfondie des mécanismes sous-jacents.
+
+# Règles d’utilisation d’OpenCV
+
+Fonctions autorisées : imread, imwrite, imshow, waitKey, cv::Mat et accès mémoire bas niveau.
+Toute fonction OpenCV réalisant un traitement d’image est strictement interdite pour ce TP et
+entrainera un malus !!!.
+
+## Info fonctions
+
+### cv::imread (Image Read): 
+Elle charge une image depuis un fichier vers une structure cv::Mat.
+
+    Usage : cv::Mat img = cv::imread("image.jpg", cv::IMREAD_COLOR);
+
+    Attention : Si le chemin est faux, img.empty() sera vrai. Par défaut, elle charge en BGR.
+
+
+### cv::imwrite (Image Write):
+Elle enregistre la matrice sur le disque.
+
+    Usage : cv::imwrite("resultat.png", img);
+
+    Utilité : Très pratique pour sauvegarder le résultat final des algorithmes (seuillage, égalisation, etc.).
+
+
+### cv::imshow (Image Show)
+
+Elle crée une fenêtre et affiche le contenu d'une cv::Mat.
+
+    Usage : cv::imshow("Titre de la fenetre", img);
+
+    Note : Elle ne fonctionne que si elle est suivie de waitKey.
+
+### cv::waitKey
+
+Attend une pression de touche.
+
+    Usage : cv::waitKey(0); (attend indéfiniment) ou cv::waitKey(30); (attend 30ms).
+
+    Crucial : Sans cette fonction, les fenêtres imshow s'ouvriront et se fermeront instantanément.
+
+
+
+
+
+
+anexe: 
+
+============histogramm.cpp 
+
+https://cplusplus.com/reference/vector/vector/vector/ (constructor vector(x y))
+
+https://docs.opencv.org/3.4/d3/d63/classcv_1_1Mat.html#a23cd599a27c59bae64b0c40ad645ea49 doc [1/12] at pour recuperer un pixel 
