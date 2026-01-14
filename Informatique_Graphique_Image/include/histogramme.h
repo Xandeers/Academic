@@ -10,11 +10,7 @@ std::vector<long> calculerHistogramme(const cv::Mat& img);
 // histogramme cumulé HC(l)  donne le nombre de pixel ayant un valeur inferieur ou egale à un niveua de gris donné 
 std::vector<long> calculerHistoCumule(const std::vector<long>& h);
 
-// Applique l'étirement (expansion) 
-cv::Mat etirementContraste(const cv::Mat& img);
-
-// Applique l'égalisation 
-cv::Mat egalisationHisto(const cv::Mat& img);
+void afficherHistogramme(const std::vector<long> &h, const std::string &nom);
 
 
 #endif
