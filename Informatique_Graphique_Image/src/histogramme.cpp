@@ -1,12 +1,13 @@
 #include"../include/histogramme.h"
 
 
+
 std::vector<long> calculerHistogramme(const cv::Mat& img){
 
     std::vector<long> h (256,0); 
     for(int i= 0; i< img.rows; i++){
         for(int j=0; j< img.cols;j++){
-            uchar intensite = img.at<uchar>(i,j); //on recuper l'intensité 
+            int intensite = img.at<uchar>(i,j); //on recuper l'intensité 
             h[intensite]++; 
         }
     }
@@ -49,6 +50,27 @@ void afficherHistogramme(const std::vector<long> &h, const std::string &nom){
 };
 
 
+cv::Mat etirementHistogramme(const cv::Mat& img){
+
+    cv::Mat imgE=img.clone();
+    std::vector<long> buff = calculerHistogramme(imgE);
+    int min = getMinH(buff); //intensité la plus faible 
+    int max = getMaxH(buff); //intensité la plus forte 
+
+    if((min - max) == 0){ // pour evité de divisé par 0 apres 
+        return imgE;
+    }
+
+    for(int i=0;i<imgE.rows;i++){
+        for(int j=0;j<imgE.cols;j++){
+
+            imgE.at<int>(i,j)= (imgE.at<uchar>(i,j) - min)/(max-min); //formule cours
+        }
+    }
+
+    return imgE; 
+
+};
 
 
 
