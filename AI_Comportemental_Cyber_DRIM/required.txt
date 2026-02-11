@@ -1,0 +1,17 @@
+# partie machine learning 
+numpy>=1.21.0
+pandas>=1.3.0
+matplotlib>=3.4.0
+seaborn>=0.11.0
+scikit-learn>=1.0.0
+xgboost>=1.5.0
+
+# api 
+fastapi>=0.68.0
+uvicorn[standard]>=0.15.0
+pydantic>=1.8.0
+
+# Tests 
+pyyaml>=5.4.0
+requests>=2.26.0
+jupyter>=1.0.0
