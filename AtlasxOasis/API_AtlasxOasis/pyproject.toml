@@ -1,0 +1,41 @@
+[project]
+name = "api-atlaxoasis-2026"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Leolienne",email = "leo.morin@outlook.fr"}
+]
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi[standard] (>=0.135.1,<0.136.0)",
+    "sqlalchemy (>=2.0.48,<3.0.0)",
+    "sqlacodegen (>=4.0.3,<5.0.0)",
+    "psycopg2-binary (>=2.9.11,<3.0.0)",
+    "uvicorn (>=0.42.0,<0.43.0)",
+    "bcrypt (>=5.0.0,<6.0.0)",
+    "pyjwt (>=2.12.1,<3.0.0)",
+]
+
+[tool.poetry]
+packages = [
+    {include = "core", from = "src/api_atlaxoasis_2026"},
+    {include = "model", from = "src/api_atlaxoasis_2026"},
+    {include = "routes", from = "src/api_atlaxoasis_2026"},
+    {include = "schema", from = "src/api_atlaxoasis_2026"},
+    {include = "security", from = "src/api_atlaxoasis_2026"},
+    {include = "service", from = "src/api_atlaxoasis_2026"}
+]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "pytest-cov (>=7.0.0,<8.0.0)",
+    "pytest (>=9.0.2,<10.0.0)",
+    "httpx (>=0.28.1,<0.29.0)"
+]
+
+[tool.coverage.run]
+relative_files = true

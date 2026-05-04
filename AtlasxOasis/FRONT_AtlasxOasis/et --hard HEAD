@@ -1,0 +1,197 @@
+[33mcommit 50d52a1ec651806b60e849516937f96e8cb3dc11[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mtest[m[33m, [m[1;31morigin/test[m[33m)[m
+Author: Xandeers <nedim.tr.pro@gmail.com>
+Date:   Fri Mar 20 03:40:29 2026 +0100
+
+    bugs CD fixed
+
+[33mcommit 05c69363d9a68f71978ecf41943cc829ca7e9bc6[m
+Author: Xandeers <nedim.tr.pro@gmail.com>
+Date:   Thu Mar 19 03:08:36 2026 +0100
+
+    test CI NGNIX P80 + Front P8081
+
+[33mcommit 695bcda31635acaaca18f3f5cbbc36a6fe28dc3b[m
+Author: Xandeers <nedim.tr.pro@gmail.com>
+Date:   Thu Mar 19 01:44:20 2026 +0100
+
+    CI/CD BUILD OK firewall ou jsp mais ngnix natif port 80 stoped retentative port 80
+
+[33mcommit 8dd9dbc5c58fbdf4df543eaa5ee28845dcef18f3[m
+Author: Xandeers <nedim.tr.pro@gmail.com>
+Date:   Thu Mar 19 01:31:02 2026 +0100
+
+    CI/CD BUILD OK MAIS PORT 8080  DEJA OCCUPÉ PAR PROXY TENTATIVE PORT 8081
+
+[33mcommit 903b59b6f99582053a1cbcb9959ca5d9d9b95a55[m
+Author: Xandeers <nedim.tr.pro@gmail.com>
+Date:   Thu Mar 19 01:25:10 2026 +0100
+
+    CI/CD BUILD OK MAIS PORT 80 DEJA OCCUPÉ PAR NGNIX TENTATIVE PORT 8080
+
+[33mcommit dcd9891b1b39e0ad1f9b4f05f587cc71ebe1244d[m
+Author: Xandeers <nedim.tr.pro@gmail.com>
+Date:   Thu Mar 19 01:13:13 2026 +0100
+
+    test CI/CD syntaxe fixed +setup proxy
+
+[33mcommit 0bd16a477dc12c97da04d58e40aad8f455c263e3[m
+Author: Xandeers <nedim.tr.pro@gmail.com>
+Date:   Thu Mar 19 01:10:48 2026 +0100
+
+    test CI/CD + SETUP PROXY
+
+[33mcommit 009435f17d555365287de3119dd1208b6ba19212[m
+Author: Xandeers <nedim.tr.pro@gmail.com>
+Date:   Thu Mar 19 01:01:43 2026 +0100
+
+    test CI/CD 2
+
+[33mcommit da9ac78b71e8df49c60f6608cdeaaa9393055830[m
+Author: Xandeers <nedim.tr.pro@gmail.com>
+Date:   Thu Mar 19 00:46:43 2026 +0100
+
+    test CI/CD
+
+[33mcommit 18234f35e94253d52862600cf929fbd1dff68167[m
+Author: Xandeers <nedim.tr.pro@gmail.com>
+Date:   Thu Mar 19 00:45:28 2026 +0100
+
+    test CI/CD
+
+[33mcommit 8e505d2c1dde8c34793258666d1e015976994bd5[m
+Author: Leticia <leticia.ghilas@etu.univ-lyon1.fr>
+Date:   Wed Mar 18 11:05:20 2026 +0100
+
+    feat(dashboard): DashboardEventRow et liste evenements — closes #21
+
+[33mcommit e32bde65ce8b7f32834144cda141999428f3117b[m
+Author: Leticia <leticia.ghilas@etu.univ-lyon1.fr>
+Date:   Wed Mar 18 10:06:29 2026 +0100
+
+    feat(dashboard): DashboardKPICard — closes #20
+
+[33mcommit b63da82a331eb5b65014b1c994587cc23ef92ae3[m
+Author: Raphaël HENG P2200092 <raphael.heng@etu.univ-lyon1.fr>
+Date:   Tue Mar 17 23:55:42 2026 +0100
+
+    feat(social): calendar export draft (TODO: adapt it to API response format) issue 40
+
+[33mcommit 38ab83e27379049faa1f185c8e8519e425535d63[m
+Author: Raphaël HENG P2200092 <raphael.heng@etu.univ-lyon1.fr>
+Date:   Tue Mar 17 22:24:40 2026 +0100
+
+    feat(social): organizer public profile draft (no responsive + TODO: adapt to the API response) issue 38
+
+[33mcommit 922e9e29e333e1daada7fd70c194c05d12c9107c[m
+Author: Sarah KESRAOUI <sarah.kesraoui@etu.univ-lyon1.fr>
+Date:   Tue Mar 17 11:59:30 2026 +0100
+
+    docs: mise a jour README equipe et conventions Git
+
+[33mcommit 7824be4b690685885e5e24656ea7c57be8d511af[m
+Author: Sarah KESRAOUI <sarah.kesraoui@etu.univ-lyon1.fr>
+Date:   Sat Mar 14 19:25:14 2026 +0100
+
+    feat(catalog): EventStatusBadge — closes #19
+
+[33mcommit 4643281bcd49aa3432b0fe6523d30e029be8c5eb[m
+Author: Sarah KESRAOUI <sarah.kesraoui@etu.univ-lyon1.fr>
+Date:   Sat Mar 14 19:24:59 2026 +0100
+
+    feat(catalog): EventAvailability — closes #18
+
+[33mcommit 889875c7cbd62192ff440202e411f7b4f20bcdb0[m
+Author: Sarah KESRAOUI <sarah.kesraoui@etu.univ-lyon1.fr>
+Date:   Sat Mar 14 12:22:38 2026 +0100
+
+    fix(auth): correction auto-import composants et icone ArrowLeft
+
+[33mcommit f4f2efde5ed54e6d1ed72f3d763737088f6039ff[m
+Author: Sarah KESRAOUI <sarah.kesraoui@etu.univ-lyon1.fr>
+Date:   Sat Mar 14 12:13:56 2026 +0100
+
+    fix(auth): ajout bouton retour et correction composants auto-import — closes #10 #11
+
+[33mcommit 8e0029f9f02d0439f679042e8287e94a04176bc8[m
+Author: Sarah KESRAOUI <sarah.kesraoui@etu.univ-lyon1.fr>
+Date:   Sat Mar 14 11:43:36 2026 +0100
+
+    fix(ui): charte graphique — text-white vers text-[#E9EEEC], encodage caracteres
+
+[33mcommit d1fb8b3ca7a7f4a47700f4c140f834b3d479ef69[m
+Author: Sarah KESRAOUI <sarah.kesraoui@etu.univ-lyon1.fr>
+Date:   Fri Mar 13 12:53:26 2026 +0100
+
+    fix(ui): correction charte graphique et migration CSS vers TailwindCSS
+
+[33mcommit 147205c175b4384c5a0a3bb495e36b5abcd71a51[m
+Author: Sarah KESRAOUI <sarah.kesraoui@etu.univ-lyon1.fr>
+Date:   Wed Mar 11 16:08:54 2026 +0100
+
+    feat(client): landing page accueil
+
+[33mcommit ccc0e05ffb2b9c3fe25363cd97873041bdfae481[m
+Author: Sarah KESRAOUI <sarah.kesraoui@etu.univ-lyon1.fr>
+Date:   Wed Mar 11 16:04:06 2026 +0100
+
+    feat(catalog): EventCard, EventFilters, catalogue et detail — closes #13 #14 #15 #16
+
+[33mcommit 95f7790518167bfd23cb9237d71df35302214825[m
+Author: Sarah KESRAOUI <sarah.kesraoui@etu.univ-lyon1.fr>
+Date:   Wed Mar 11 16:00:24 2026 +0100
+
+    feat(auth): pages login et register — closes #10 #11
+
+[33mcommit f82213ebef139402aec422459d2139eae800ee36[m
+Author: Sarah KESRAOUI <sarah.kesraoui@etu.univ-lyon1.fr>
+Date:   Wed Mar 11 15:54:59 2026 +0100
+
+    feat(auth): AppHeader, store auth, middleware — closes #9 #12
+
+[33mcommit 0e38ccd87b5230da85b46168a6122f5ad140c661[m
+Author: Sarah KESRAOUI <sarah.kesraoui@etu.univ-lyon1.fr>
+Date:   Wed Mar 11 15:50:32 2026 +0100
+
+    chore(pages): contenu minimal toutes les pages vue
+
+[33mcommit aa68c231230b7d21fb1c1e0eac1faa1eafea3f53[m
+Author: Sarah KESRAOUI <sarah.kesraoui@etu.univ-lyon1.fr>
+Date:   Wed Mar 11 15:42:46 2026 +0100
+
+    feat(ui): AppButton, AppInput, AppSelect, AppModal, AppBadge
+
+[33mcommit 9c41b21af9cf08b1e57ad54b6b007e4e7448e4fd[m
+Author: Sarah KESRAOUI <sarah.kesraoui@etu.univ-lyon1.fr>
+Date:   Wed Mar 11 15:32:46 2026 +0100
+
+    feat(layout): layouts default et auth
+
+[33mcommit df81a11b2705a0aeb829f8cc94000d0b99d05202[m
+Author: Sarah KESRAOUI <sarah.kesraoui@etu.univ-lyon1.fr>
+Date:   Wed Mar 11 15:30:33 2026 +0100
+
+    feat(setup): types TypeScript Event, Booking, User
+
+[33mcommit 096f8860222d65a81fbf1014f67f42889a8d0911[m
+Author: Sarah KESRAOUI <sarah.kesraoui@etu.univ-lyon1.fr>
+Date:   Wed Mar 11 15:27:49 2026 +0100
+
+    chore(setup): init arborescence complete AtlasXOasis — closes #1
+
+[33mcommit 6a02dfd0da86d3c20318c51918d24925ef93dfc0[m
+Author: Sarah KESRAOUI <sarah.kesraoui@etu.univ-lyon1.fr>
+Date:   Wed Mar 11 15:24:04 2026 +0100
+
+    feat(setup): charte graphique CSS variables — closes #1 #2
+
+[33mcommit 012d8cbff14a5389d84138b0288ac5c8707b47a8[m
+Author: Sarah KESRAOUI <sarah.kesraoui@etu.univ-lyon1.fr>
+Date:   Wed Mar 11 15:17:10 2026 +0100
+
+    feat(setup): init projet NuxtJS + pinia — closes #1 #2 #3
+
+[33mcommit f388aa792ae77c5f5121fe8e30fdf48ad202c1ab[m
+Author: MORIN LEO p2210217 <leo.morin@etu.univ-lyon1.fr>
+Date:   Fri Feb 27 15:26:44 2026 +0000
+
+    Initial commit

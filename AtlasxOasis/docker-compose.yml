@@ -1,0 +1,40 @@
+services:
+  # Base de données 
+  db:
+    image: forge.univ-lyon1.fr:4567/mif10-g14-projet-transversal-2026/api-atlaxoasis-2026/db:test2
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - web-network
+
+  
+  api:
+    image: forge.univ-lyon1.fr:4567/mif10-g14-projet-transversal-2026/api-atlaxoasis-2026:test2
+    restart: always
+    depends_on:
+      - db
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    networks:
+      - web-network
+
+  #
+  front:
+    image: forge.univ-lyon1.fr:4567/mif10-g14-projet-transversal-2026/webapp-atlaxoasis-2026:test2
+    restart: always
+    ports:
+      - "3000:3000"
+    networks:
+      - web-network
+
+networks:
+  web-network:
+    driver: bridge
+
+volumes:
+  postgres_data:

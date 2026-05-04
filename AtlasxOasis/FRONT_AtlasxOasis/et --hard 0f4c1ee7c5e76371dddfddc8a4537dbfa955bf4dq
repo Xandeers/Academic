@@ -1,0 +1,197 @@
+[33mcommit f617bd5af4a6b2257d55b077c384ee177db065b8[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: Sarah KESRAOUI <sarah.kesraoui@etu.univ-lyon1.fr>
+Date:   Sun Mar 22 21:28:45 2026 +0100
+
+    feat(social): mes favoris — closes #36
+
+[33mcommit 0f4c1ee7c5e76371dddfddc8a4537dbfa955bf4d[m
+Author: Sarah KESRAOUI <sarah.kesraoui@etu.univ-lyon1.fr>
+Date:   Sun Mar 22 21:22:11 2026 +0100
+
+    feat(social): like unlike et partager evenement — closes #35 #37
+
+[33mcommit 139120e9e224624a789ef91d0526a73de471afbf[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Sarah KESRAOUI <sarah.kesraoui@etu.univ-lyon1.fr>
+Date:   Sun Mar 22 20:48:04 2026 +0100
+
+    fix(auth): remise en place middleware profil
+
+[33mcommit 91f063c594d48c990cff29e1fc5e0cf7a0365355[m
+Author: Sarah KESRAOUI <sarah.kesraoui@etu.univ-lyon1.fr>
+Date:   Sun Mar 22 20:47:24 2026 +0100
+
+    fix(auth): desactivation middleware pour test profil
+
+[33mcommit 98261c2358f1174a7dbc04a8c2afd7e65ad14ecc[m
+Author: Sarah KESRAOUI <sarah.kesraoui@etu.univ-lyon1.fr>
+Date:   Sun Mar 22 20:26:00 2026 +0100
+
+    feat(auth): profil personnel — closes #34
+
+[33mcommit a5194031425e1603f0d52e7bdd4289983f424053[m
+Author: Leticia <leticia.ghilas@etu.univ-lyon1.fr>
+Date:   Sun Mar 22 15:21:24 2026 +0100
+
+    feat(booking): liste attente cote client — closes #27
+
+[33mcommit a372257949a870c63e2790005da085b4221865fd[m
+Author: Leticia <leticia.ghilas@etu.univ-lyon1.fr>
+Date:   Sun Mar 22 15:00:04 2026 +0100
+
+    feat(booking): Mes Billets dans le profil — closes #26
+
+[33mcommit 610343b8aa26cc19a0348937359999b4db206055[m
+Author: Leticia <leticia.ghilas@etu.univ-lyon1.fr>
+Date:   Sun Mar 22 14:48:50 2026 +0100
+
+    feat(booking): page confirmation et BookingTicket — closes #24
+
+[33mcommit 1aff08c7d85e4032aeaea222ea6010e501cd9440[m
+Author: Leticia <leticia.ghilas@etu.univ-lyon1.fr>
+Date:   Fri Mar 20 14:54:56 2026 +0100
+
+    feat(booking): BookingForm — closes #23
+
+[33mcommit cd8c3a5be4d9af6021fca03c0a93c07c2ed0fc1e[m
+Author: Leticia <leticia.ghilas@etu.univ-lyon1.fr>
+Date:   Thu Mar 19 15:08:26 2026 +0100
+
+    feat(dashboard): DashboardChart et page dashboard — closes #22
+
+[33mcommit 8e505d2c1dde8c34793258666d1e015976994bd5[m
+Author: Leticia <leticia.ghilas@etu.univ-lyon1.fr>
+Date:   Wed Mar 18 11:05:20 2026 +0100
+
+    feat(dashboard): DashboardEventRow et liste evenements — closes #21
+
+[33mcommit e32bde65ce8b7f32834144cda141999428f3117b[m
+Author: Leticia <leticia.ghilas@etu.univ-lyon1.fr>
+Date:   Wed Mar 18 10:06:29 2026 +0100
+
+    feat(dashboard): DashboardKPICard — closes #20
+
+[33mcommit b63da82a331eb5b65014b1c994587cc23ef92ae3[m
+Author: Raphaël HENG P2200092 <raphael.heng@etu.univ-lyon1.fr>
+Date:   Tue Mar 17 23:55:42 2026 +0100
+
+    feat(social): calendar export draft (TODO: adapt it to API response format) issue 40
+
+[33mcommit 38ab83e27379049faa1f185c8e8519e425535d63[m
+Author: Raphaël HENG P2200092 <raphael.heng@etu.univ-lyon1.fr>
+Date:   Tue Mar 17 22:24:40 2026 +0100
+
+    feat(social): organizer public profile draft (no responsive + TODO: adapt to the API response) issue 38
+
+[33mcommit 922e9e29e333e1daada7fd70c194c05d12c9107c[m
+Author: Sarah KESRAOUI <sarah.kesraoui@etu.univ-lyon1.fr>
+Date:   Tue Mar 17 11:59:30 2026 +0100
+
+    docs: mise a jour README equipe et conventions Git
+
+[33mcommit 7824be4b690685885e5e24656ea7c57be8d511af[m
+Author: Sarah KESRAOUI <sarah.kesraoui@etu.univ-lyon1.fr>
+Date:   Sat Mar 14 19:25:14 2026 +0100
+
+    feat(catalog): EventStatusBadge — closes #19
+
+[33mcommit 4643281bcd49aa3432b0fe6523d30e029be8c5eb[m
+Author: Sarah KESRAOUI <sarah.kesraoui@etu.univ-lyon1.fr>
+Date:   Sat Mar 14 19:24:59 2026 +0100
+
+    feat(catalog): EventAvailability — closes #18
+
+[33mcommit 889875c7cbd62192ff440202e411f7b4f20bcdb0[m
+Author: Sarah KESRAOUI <sarah.kesraoui@etu.univ-lyon1.fr>
+Date:   Sat Mar 14 12:22:38 2026 +0100
+
+    fix(auth): correction auto-import composants et icone ArrowLeft
+
+[33mcommit f4f2efde5ed54e6d1ed72f3d763737088f6039ff[m
+Author: Sarah KESRAOUI <sarah.kesraoui@etu.univ-lyon1.fr>
+Date:   Sat Mar 14 12:13:56 2026 +0100
+
+    fix(auth): ajout bouton retour et correction composants auto-import — closes #10 #11
+
+[33mcommit 8e0029f9f02d0439f679042e8287e94a04176bc8[m
+Author: Sarah KESRAOUI <sarah.kesraoui@etu.univ-lyon1.fr>
+Date:   Sat Mar 14 11:43:36 2026 +0100
+
+    fix(ui): charte graphique — text-white vers text-[#E9EEEC], encodage caracteres
+
+[33mcommit d1fb8b3ca7a7f4a47700f4c140f834b3d479ef69[m
+Author: Sarah KESRAOUI <sarah.kesraoui@etu.univ-lyon1.fr>
+Date:   Fri Mar 13 12:53:26 2026 +0100
+
+    fix(ui): correction charte graphique et migration CSS vers TailwindCSS
+
+[33mcommit 147205c175b4384c5a0a3bb495e36b5abcd71a51[m
+Author: Sarah KESRAOUI <sarah.kesraoui@etu.univ-lyon1.fr>
+Date:   Wed Mar 11 16:08:54 2026 +0100
+
+    feat(client): landing page accueil
+
+[33mcommit ccc0e05ffb2b9c3fe25363cd97873041bdfae481[m
+Author: Sarah KESRAOUI <sarah.kesraoui@etu.univ-lyon1.fr>
+Date:   Wed Mar 11 16:04:06 2026 +0100
+
+    feat(catalog): EventCard, EventFilters, catalogue et detail — closes #13 #14 #15 #16
+
+[33mcommit 95f7790518167bfd23cb9237d71df35302214825[m
+Author: Sarah KESRAOUI <sarah.kesraoui@etu.univ-lyon1.fr>
+Date:   Wed Mar 11 16:00:24 2026 +0100
+
+    feat(auth): pages login et register — closes #10 #11
+
+[33mcommit f82213ebef139402aec422459d2139eae800ee36[m
+Author: Sarah KESRAOUI <sarah.kesraoui@etu.univ-lyon1.fr>
+Date:   Wed Mar 11 15:54:59 2026 +0100
+
+    feat(auth): AppHeader, store auth, middleware — closes #9 #12
+
+[33mcommit 0e38ccd87b5230da85b46168a6122f5ad140c661[m
+Author: Sarah KESRAOUI <sarah.kesraoui@etu.univ-lyon1.fr>
+Date:   Wed Mar 11 15:50:32 2026 +0100
+
+    chore(pages): contenu minimal toutes les pages vue
+
+[33mcommit aa68c231230b7d21fb1c1e0eac1faa1eafea3f53[m
+Author: Sarah KESRAOUI <sarah.kesraoui@etu.univ-lyon1.fr>
+Date:   Wed Mar 11 15:42:46 2026 +0100
+
+    feat(ui): AppButton, AppInput, AppSelect, AppModal, AppBadge
+
+[33mcommit 9c41b21af9cf08b1e57ad54b6b007e4e7448e4fd[m
+Author: Sarah KESRAOUI <sarah.kesraoui@etu.univ-lyon1.fr>
+Date:   Wed Mar 11 15:32:46 2026 +0100
+
+    feat(layout): layouts default et auth
+
+[33mcommit df81a11b2705a0aeb829f8cc94000d0b99d05202[m
+Author: Sarah KESRAOUI <sarah.kesraoui@etu.univ-lyon1.fr>
+Date:   Wed Mar 11 15:30:33 2026 +0100
+
+    feat(setup): types TypeScript Event, Booking, User
+
+[33mcommit 096f8860222d65a81fbf1014f67f42889a8d0911[m
+Author: Sarah KESRAOUI <sarah.kesraoui@etu.univ-lyon1.fr>
+Date:   Wed Mar 11 15:27:49 2026 +0100
+
+    chore(setup): init arborescence complete AtlasXOasis — closes #1
+
+[33mcommit 6a02dfd0da86d3c20318c51918d24925ef93dfc0[m
+Author: Sarah KESRAOUI <sarah.kesraoui@etu.univ-lyon1.fr>
+Date:   Wed Mar 11 15:24:04 2026 +0100
+
+    feat(setup): charte graphique CSS variables — closes #1 #2
+
+[33mcommit 012d8cbff14a5389d84138b0288ac5c8707b47a8[m
+Author: Sarah KESRAOUI <sarah.kesraoui@etu.univ-lyon1.fr>
+Date:   Wed Mar 11 15:17:10 2026 +0100
+
+    feat(setup): init projet NuxtJS + pinia — closes #1 #2 #3
+
+[33mcommit f388aa792ae77c5f5121fe8e30fdf48ad202c1ab[m
+Author: MORIN LEO p2210217 <leo.morin@etu.univ-lyon1.fr>
+Date:   Fri Feb 27 15:26:44 2026 +0000
+
+    Initial commit
